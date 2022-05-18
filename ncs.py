@@ -19,7 +19,7 @@ d = u2.connect()
 while True:
     if (d(description="FREE \n250").exists):
         d(description="FREE \n250").click()
-        sleep(.3)
+        sleep(.5)
 
         d.press("home")
         sleep(1)
