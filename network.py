@@ -15,6 +15,7 @@ class Network:
 		    print(x.info)
 		    x.click()
 		    sleep(1)
+		    d(description="EXPLOIT").click()
 	
 	def scanWith(self, fw=None,crewName=None, spamLvl=None):
 		for x in d.xpath('//*[@resource-id="android:id/content"]/android.widget.FrameLayout[1]/android.view.View[1]/android.view.View[1]/android.view.View[1]/android.view.View[1]/*/android.view.View[*]').all() :
@@ -64,6 +65,7 @@ class Network:
 net = Network()
 while True:
 	# net.prototypeScanSpam()
-	# net.scanAll()
+	net.scanAll()
+	# d(description="EXPLOIT").click()
 	# net.scanFW(20000000000)
-	net.scanWith()
+	# net.scanWith()

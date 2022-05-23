@@ -7,7 +7,7 @@ d = u2.connect()
 
 d(description="50\nBooyah").click()
 a = 0
-while True:
+while a<25:
     text = "progress: " + str(a) + "X" 
     print ("\r" + text + "        ", end='')
     a = a + 1
