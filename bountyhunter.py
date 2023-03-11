@@ -28,11 +28,13 @@ ui_object = d.xpath('//*[@index="{}"]'.format(view_index))
 
 
 # obtener el texto de la vista
-level = ui_object.info['contentDescription']
-if ":" in level:
-    print("There's no bounty running")
-else:
-	while havewinner:
+while havewinner:
+	level = ui_object.info['contentDescription']
+	if ":" in level:
+		print("There's no bounty running")
+		time.sleep(15)
+		d.click(0.861, 0.964)
+	else:
 		for x in d.xpath('//*[contains(@content-desc, "LEVEL ")]').all():
 			info = x.info["contentDescription"].split("\n")
 			ip = info[0]
@@ -40,7 +42,7 @@ else:
 			if level1 == level:
 				print(f"found level {level}")
 				x.click()
-				time.sleep(0.25)
+				time.sleep(0.2)
 				continue
 			else:
 				
