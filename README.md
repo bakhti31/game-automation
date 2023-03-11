@@ -13,13 +13,24 @@ python
 
 
 
-python libraries need
+python libraries needed
+
 uiautomator2
 
+#install:
 
-how i run this code?
-in phone im enabling usb debugging
-connecting my phone to my laptop by usb
-then running my code when my phone already open the game
 
-u can read this docs to update or adding new feature https://github.com/openatx/uiautomator2
+python -m pip install uiautomator2
+
+
+#how to run this code?
+
+in your phone enable usb debugging
+connecting your phone to your pc by usb
+then run the game and excecute your desired script
+
+for example
+
+python bountyhunter.py (you should be on network to use this script)
+
+you can read this docs to update or adding new features https://github.com/openatx/uiautomator2
