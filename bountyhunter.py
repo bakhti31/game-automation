@@ -1,45 +1,55 @@
-# coding: utf-8
-#
 import uiautomator2 as u2
+import xml.etree.ElementTree as ET
+from uiautomator2 import UiObject
+import time
 
 d = u2.connect()
 
-havewinner = 0
-while havewinner:
-	for x in d.xpath('//*[contains(@content-desc, "LEVEL \n48")]').all() :
-		# if :
-			# pass
-	    x.click()
-	    # print(x.info)
-	    time.sleep(.2)
-	    d(description="EXPLOIT").click()
-	    # print(d(description="FIREWALL: ").right(className="android.view.View").info['contentDescription'])
-	    # print(d.xpath('//*[@content-desc="LEVEL: "]/following::android.view.View[1]').info['contentDescription'])
-	    # time.sleep(1)
-    
+lol = []
+left, top, right, bottom = 485, 1740, 595, 1850
+havewinner = True
+
+center_x = (left + right) // 2
+center_y = (top + bottom) // 2
+hierarchy = d.dump_hierarchy()
+# analizar la cadena XML
+root = ET.fromstring(hierarchy)
+
+# encontrar la vista con los bounds y el índice específico
+view_index = 11  # índice de la vista
+view_bounds = "[806,144][842,177]"  # bounds de la vista como una cadena
+view = None
+for node in root.iter():
+    if node.attrib.get('index') == str(view_index) and node.attrib.get('bounds') == view_bounds:
+        view = node
+        break
+ui_object = d.xpath('//*[@index="{}"]'.format(view_index))
 
 
 
-# # coding: utf-8
-# #
-# import uiautomator2 as u2
+# obtener el texto de la vista
+level = ui_object.info['contentDescription']
+if ":" in level:
+    print("There's no bounty running")
+else:
+	while havewinner:
+		for x in d.xpath('//*[contains(@content-desc, "LEVEL ")]').all():
+			info = x.info["contentDescription"].split("\n")
+			ip = info[0]
+			level1 = info[2]
+			if level1 == level:
+				print(f"found level {level}")
+				x.click()
+				time.sleep(0.25)
+				continue
+			else:
+				
+				continue
+		
+		# check if there are any items in the list
+		time.sleep(.3)
+		d.click(center_x, center_y)
+		time.sleep(.2)
 
-# d = u2.connect()
-# running = True
-# while running:
-#     for x in d.xpath('//*[contains(@content-desc, "LEVEL \n")]').all() :		    
-#     # for x in d.xpath('//*[contains(@content-desc, "LEVEL \n57")]').all() :
-#         x.click()
-        
-#         time.sleep(.2)
-#         if d(description="UNABLE TO RETRIEVE DATA, SCAN BLOCKED \nUPGRADE YOUR SCAN SOFTWARE").exists:
-#             continue
-#         spam = d.xpath('//*[@content-desc="SPAM: "]/following::android.view.View[1]').info['contentDescription']
-#         spamlvl = spam.replace(",","")
-#         print(int(spamlvl))
-#         time.sleep(1)
-#         if int(spamlvl) > 1000000000:
-#             d(description="EXPLOIT").click()
-#         # time.sleep(1)
-#         # d(description="EXPLOIT").click()
-#     d.click(0.526, 0.72)
+
+
