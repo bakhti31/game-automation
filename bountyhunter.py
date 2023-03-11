@@ -5,7 +5,6 @@ import time
 
 d = u2.connect()
 
-lol = []
 izq,arr,der,aba = 45,682,258,895
 left, top, right, bottom = 485, 1740, 595, 1850
 havewinner = True
