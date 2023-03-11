@@ -22,3 +22,4 @@ in phone im enabling usb debugging
 connecting my phone to my laptop by usb
 then running my code when my phone already open the game
 
+u can read this docs to update or adding new feature https://github.com/openatx/uiautomator2
