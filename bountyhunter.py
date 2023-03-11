@@ -5,6 +5,7 @@ import time
 
 d = u2.connect()
 
+lol = []
 izq,arr,der,aba = 45,682,258,895
 left, top, right, bottom = 485, 1740, 595, 1850
 havewinner = True
@@ -15,7 +16,6 @@ network_y = (arr+aba)//2
 
 hierarchy = d.dump_hierarchy()
 # analizar la cadena XML
-print(hierarchy)
 root = ET.fromstring(hierarchy)
 
 # encontrar la vista con los bounds y el índice específico
@@ -29,8 +29,8 @@ for node in root.iter():
 ui_object = d.xpath('//*[@index="{}"]'.format(view_index))
 
 
-
 # obtener el texto de la vista
+d(description="HOME").click()
 d.click(network_x,network_y)
 while havewinner:
 	level = ui_object.info['contentDescription']
