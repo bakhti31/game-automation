@@ -17,13 +17,13 @@ python libraries needed
 
 uiautomator2
 
-#install:
+# install:
 
 
 python -m pip install uiautomator2
 
 
-#how to run this code?
+# how to run this code?
 
 in your phone enable usb debugging
 connecting your phone to your pc by usb
